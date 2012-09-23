@@ -7,6 +7,7 @@ let rec pascal c r =
   if (c == r || c == 0) then 1
   else pascal c (r - 1) + pascal (c - 1) (r - 1);;
 
+
 let explode s =
   let rec exp i l =
     if i < 0 then l else exp (i - 1) (s.[i] :: l) in
@@ -30,3 +31,13 @@ let matcher s =
   else rec_match 0 chars == 0;;
 
 matcher "this() is( an expression)";;
+
+let rec coin_denomination amount coins =
+  if amount = 0 then 1
+  else if (amount < 0 || List.length coins == 0) then 0
+  else coin_denomination (amount - List.hd coins) coins + 
+    coin_denomination amount (List.tl coins);;
+
+coin_denomination 100 [1; 2; 5; 10];;
+
+    
