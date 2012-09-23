@@ -32,6 +32,8 @@ let matcher s =
 
 matcher "this() is( an expression)";;
 
+(* A function that works out how many ways there are
+to make up a given amount from certain denominations *)
 let rec coin_denomination amount coins =
   if amount = 0 then 1
   else if (amount < 0 || List.length coins == 0) then 0
